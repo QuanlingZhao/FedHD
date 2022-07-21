@@ -57,3 +57,17 @@ Note: client uuid must be unique.
 ## Results
 ![Measurment](fig/Measurment.PNG)\
 ![Result](fig/Result.PNG)
+
+
+
+
+
+## Acknowledgement
+FedHD are implemented based on [FedML](https://fedml.ai/), an open-source Federated Learning framework.
+
+
+
+
+
+
+
