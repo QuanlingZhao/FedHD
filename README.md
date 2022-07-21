@@ -50,10 +50,10 @@ Note: client uuid must be unique.
 ## Evaluation
 ![Setup](fig/Setup.PNG)\
 1 - Hidden Layer\
-2 - Fully Connected Layer\
+2 - Fully Connected Layer
 
 
 
 ## Results
 ![Measurment](fig/Measurment.PNG)\
-![Result](fig/Result.PNG)\
+![Result](fig/Result.PNG)
