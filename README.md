@@ -1,10 +1,11 @@
 # FedHD - Federated Learning with Hyperdimensional Computing
 
 This repository is the official implementation of FedHD [Link(TBA Paper under review)](). 
-
-
 ![System_flow](fig/System_flow.PNG)
 
+## Aim / Motivation
+
+An edge-device friendly, efficient and robust Federated Learning System using Hyperdimensional Computing.
 
 ## Requirements
 
@@ -16,45 +17,43 @@ pip install -r requirements.txt
 
 ## Training
 
-To train the model(s) in the paper, run this command:
+FedHD use Mosquitto(https://mosquitto.org/) MQTT broker for communication and broadcasting.
 
-```train
-python train.py --input-data <path_to_data> --alpha 10 --beta 20
+### Start MQTT Broker
+Go to **FedML-Server-HD/executor/mqtt/**
+Start server MQTT broker:
+```MQTT Broker
+bash run_mosquitto_server.sh
 ```
+Note: Before start MQTT broker, one might want to change MQTT configration (IP, Port), you can do so by change **/FedML-Server-HD/executor/mqtt/mosquitto.conf**.
 
->📋  Describe how to train the models, with example commands on how to train the models in your paper, including the full training procedure and appropriate hyperparameters.
+
+
+### Start FedHD Broker
+Go to **FedML-Server-HD/executor/** :
+```FedHD Server
+python app_HD.py [--options]
+```
+You can change server default options by pass in flag or modify file directly, for complete hyper-parameter list are listed in **app_HD.py**.
+Please make sure MQTT IP and Port matches MQTT configration.
+
+
+
+### Start FedHD Clients
+To start clients, go to **FedML-IoT-HD/raspberry_pi/fedhd/** and run
+```FedHD Client
+python fedhd_rpi_client.py --server_ip XXX.XXX.XXX.XXX:XXXX --client_uuid XX 
+```
+Note: client uuid must be unique.
+
 
 ## Evaluation
+![Setup](fig/Setup.PNG)\
+1 - Hidden Layer\
+2 - Fully Connected Layer\
 
-To evaluate my model on ImageNet, run:
 
-```eval
-python eval.py --model-file mymodel.pth --benchmark imagenet
-```
-
->📋  Describe how to evaluate the trained models on benchmarks reported in the paper, give commands that produce the results (section below).
-
-## Pre-trained Models
-
-You can download pretrained models here:
-
-- [My awesome model](https://drive.google.com/mymodel.pth) trained on ImageNet using parameters x,y,z. 
-
->📋  Give a link to where/how the pretrained models can be downloaded and how they were trained (if applicable).  Alternatively you can have an additional column in your results table with a link to the models.
 
 ## Results
-
-Our model achieves the following performance on :
-
-### [Image Classification on ImageNet](https://paperswithcode.com/sota/image-classification-on-imagenet)
-
-| Model name         | Top 1 Accuracy  | Top 5 Accuracy |
-| ------------------ |---------------- | -------------- |
-| My awesome model   |     85%         |      95%       |
-
->📋  Include a table of results from your paper, and link back to the leaderboard for clarity and context. If your main result is a figure, include that figure and link to the command or notebook to reproduce it. 
-
-
-## Contributing
-
->📋  Pick a licence and describe how to contribute to your code repository. 
+![Measurment](fig/Measurment.PNG)\
+![Result](fig/Result.PNG)\
